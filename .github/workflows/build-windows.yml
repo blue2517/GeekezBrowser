@@ -51,12 +51,23 @@ jobs:
         env:
           CSC_IDENTITY_AUTO_DISCOVERY: 'false'
 
-      - name: Upload installer and portable package
+      - name: Verify packaged resources and report sizes
+        run: npm run verify:package:win
+
+      - name: Upload installer
         uses: actions/upload-artifact@v4
         with:
-          name: GeekEZ-Browser-windows-x64-${{ github.sha }}
+          name: GeekEZ-Browser-windows-x64-installer-${{ github.sha }}
           if-no-files-found: error
           retention-days: 14
-          path: |
-            dist/*.exe
-            dist/*.zip
+          compression-level: 0
+          path: dist/*.exe
+
+      - name: Upload portable package
+        uses: actions/upload-artifact@v4
+        with:
+          name: GeekEZ-Browser-windows-x64-portable-${{ github.sha }}
+          if-no-files-found: error
+          retention-days: 14
+          compression-level: 0
+          path: dist/*.zip
