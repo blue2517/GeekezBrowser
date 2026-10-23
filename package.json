@@ -6,6 +6,7 @@
   "author": "EchoHS",
   "license": "SEE LICENSE IN LICENSE",
   "scripts": {
+    "test": "node --test tests/*.test.mjs",
     "dev": "electron-vite dev",
     "build": "electron-vite build",
     "postinstall": "node setup.js",

@@ -69,6 +69,9 @@ jobs:
       
       - run: npm ci --ignore-scripts
 
+      - name: Test proxy configuration
+        run: npm test
+
       - name: Get Xray version
         id: xray
         shell: bash
